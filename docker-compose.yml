@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: pg-fiddle
+    image: postgres:latest
+    environment: 
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      DOCKER_PASSWORD: ${DOCKER_PASSWORD:-docker}
+      POSTGRES_DB: ${POSTGRES_DB:-test}
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    networks:
+      - postgres
+    volumes:
+      - ./scripts/init_user_db.sh:/docker-entrypoint-initdb.d/init_user_db.sh
+      - ./scripts/create_table.sql:/scripts/create_table.sql
+
+networks:
+  postgres:
+    driver: bridge
