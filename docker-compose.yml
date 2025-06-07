@@ -15,9 +15,13 @@ services:
     networks:
       - postgres
     volumes:
+      - pgdata:/var/lib/postgresql/data
       - ./scripts/init_user_db.sh:/docker-entrypoint-initdb.d/init_user_db.sh
       - ./scripts/create_table.sql:/scripts/create_table.sql
 
 networks:
   postgres:
     driver: bridge
+
+volumes:
+  pgdata:

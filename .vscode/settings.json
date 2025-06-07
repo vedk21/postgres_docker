@@ -5,7 +5,7 @@
       "server": "localhost",
       "port": 5432,
       "driver": "PostgreSQL",
-      "name": "postgres_vs_code",
+      "name": "postgres_docker_db_test",
       "database": "test",
       "username": "docker",
       "password": "docker"
